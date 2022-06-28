@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form id="form1" method="POST" action="/">
+    <label>이름</label> <input type="text" min="2" max="5">
+    <label>나이</label> <input type="number">
+        
+    <input type="radio" name="chk_info" value="HTML">미혼
+    <input type="radio" name="chk_info" value="CSS">기혼
+    <button id="btn1">submit</button>
+</form>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    btn1.onclick = function (e) {
+        var formData = $("#form1").serialize();
+        $.ajax({
+            url: "127.0.0.1:5000/",
+            type: 'POST', 
+            data: formData,
+            success: function (data) {
+                alert(data);
+            },
+            error: function (xhr, status) {
+                alert(xhr + " : " + status);
+            }
+        });
+        return false;
+    }
+</script>
+</body>
+</html>
