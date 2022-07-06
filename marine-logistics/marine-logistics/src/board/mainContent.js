@@ -1,11 +1,12 @@
-import React, {Component } from "react"
+import React, {Component} from "react"
 import { ListGroup} from 'react-bootstrap';
 import PaginationBar from "./Pagination";
-// import axios from "axios";
 import { Dropdown, InputGroup,Form, DropdownButton } from 'react-bootstrap';
 
 
-// import ApiService from '../config/SetProxy'
+
+
+const USER_API_BASE_URL = "http://localhost:8080/board";
 
 class MainContent extends Component {
     
@@ -15,9 +16,10 @@ class MainContent extends Component {
             data : [],
             mode : ""
         }
-        
+        console.log("=============================================");
+        console.log(this.props.BoardList+ " ???")
+        console.log("=============================================");
     }
-    
     render(){
         
         return(
@@ -26,17 +28,20 @@ class MainContent extends Component {
             <div style={{width:'100%', justifyContent:"center", margin:"auto" }}>
             
             <ListGroup key={'md'} horizontal={'md'} className="my-2" style={{width:"100%"}}>
-            {['제목', '요약','작성일','작성자'].map((text) => (
+            {['글 번호','제목', '요약','작성일','작성자'].map((text) => (
                 <ListGroup.Item style={{width:"25%"}}>{text}</ListGroup.Item>
             ))}
             </ListGroup>
-            {['md', 'md', 'md', 'md', 'md','md', 'md', 'md', 'md', 'md'].map((breakpoint) => (
-                <ListGroup key={breakpoint} horizontal={breakpoint} className="my-2" style={{width:"100%"}}>
-                <ListGroup.Item style={{width:"25%"}}>Thisrqerqew ListGroup2</ListGroup.Item>
-                <ListGroup.Item style={{width:"25%"}}>renders horizontally</ListGroup.Item>
-                <ListGroup.Item style={{width:"25%"}}>onfadsfas {breakpoint}</ListGroup.Item>
-                <ListGroup.Item style={{width:"25%"}}>and above!</ListGroup.Item>
-                </ListGroup>
+            {this.props.BoardList   .map((data) => (
+                <a style={{
+                    textDecoration:'none'
+                }}  href={`${USER_API_BASE_URL}/getBoard/${data.id}`}><ListGroup key='md' horizontal='md' className="my-2" style={{width:"100%"}}>
+                <ListGroup.Item style={{width:"25%"}}>{data.id}</ListGroup.Item>
+                <ListGroup.Item style={{width:"25%"}}>{data.title}</ListGroup.Item>
+                <ListGroup.Item style={{width:"25%"}}>{data.context}</ListGroup.Item>
+                <ListGroup.Item style={{width:"25%"}}>{data. }</ListGroup.Item>
+                <ListGroup.Item style={{width:"25%"}}>{data.localDateTime.split('T')[0]   }</ListGroup.Item>
+                </ListGroup></a>
             ))}
             </div>
             <InputGroup className="mb-3">
