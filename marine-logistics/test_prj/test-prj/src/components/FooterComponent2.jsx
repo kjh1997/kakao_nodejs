@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Row, Col} from "reactstrap";
 
 class FooterComponent2 extends Component {
     constructor(props) {
@@ -8,14 +9,22 @@ class FooterComponent2 extends Component {
 
         }
     }
+    Year = () => {
+        const year = new Date().getFullYear();
+        return year
+    };
 
     render() {
         return (
-            <div>
-                <footer className="footer">
-                    <span className="text-muted">Started 2020 </span>
-                </footer>
-            </div>
+        <>
+        <div style={{position:'fixed',bottom:'0', width:'100%', display: "flex",  justifyContent: "center"}}>
+                <Row>
+                    <Col>
+                        <p> Copyright &copy; <span>{this.Year()}</span> </p>
+                    </Col>
+                </Row>
+        </div> 
+        </>
         );
     }
 }

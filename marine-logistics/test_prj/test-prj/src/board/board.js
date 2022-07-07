@@ -33,7 +33,7 @@ const buttonNum = (maxpage) =>{
 }
 
 
-const Test2 =(props) => {
+const Board =(props) => {
     const [maxpage, setMaxpage] = React.useState();
     
     const [boardData, setBoardData] = React.useState([]);
@@ -58,10 +58,14 @@ const Test2 =(props) => {
 
     return (
         <>
-            
+            <br></br>
+            <div style={{ display: "flex",  justifyContent: "end"}}>
+            <button><a href='/boardCreate' style={{textDecoration:'none', color:'#000000'}}>글작성</a></button>
+            </div>
+            <br></br>
             <Table striped bordered hover>
             <thead>
-                <tr>
+                <tr>    
                 <th>글 번호</th>
                 <th>제목</th>
                 <th>작성자</th>
@@ -83,7 +87,7 @@ const Test2 =(props) => {
             
             <div >
                 
-                <div style={{ display: "flex",  justifyContent: "center", alignItems: "center" }}>
+                <div style={{ display: "flex",  justifyContent: "center"}}>
                 <ButtonGroup className="me-2-center" aria-label="First group" >
                 <button onClick={()=>setPage(PageDescend(page, maxpage))}>이전</button>
                 
@@ -106,4 +110,4 @@ const Test2 =(props) => {
 }
 
 
-export default Test2
+export default Board
