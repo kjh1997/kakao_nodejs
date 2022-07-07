@@ -3,26 +3,37 @@ import Button from "react-bootstrap/Button";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { useEffect } from "react";
 
 function Login(){
+    const [id, setId] = useEffect("")
+    const [pw, setPw] = useEffect("")
+
+    const pwHandler = (e) =>{
+        setPw(e.currentTarget.value)
+        console.log(pw)
+    } 
+    const idHandler = (e) =>{
+        setId(e.currentTarget.value)
+        console.log(id)
+    }
+
     return (
         <>
         <br></br>
         <div>
             
             <Container className="panel">
-                <Form>
-                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                
                         <Col sm>
-                            <Form.Control type="password" placeholder="UserID" />
+                            <input type={"text"} onChange={idHandler} placeholder="UserId"></input>
                         </Col>
-                    </Form.Group>
+                    
 
-                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                         <Col sm>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control type="password" onChange={{pwHandler}} placeholder="Password" />
                         </Col>
-                    </Form.Group>
+                   
                     <br/>
 
                     <div className="d-grid gap-1">
@@ -30,7 +41,7 @@ function Login(){
                             Sign In
                         </Button>
                     </div>
-                </Form>
+                
             </Container>
         </div>
         </>

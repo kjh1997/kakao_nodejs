@@ -1,13 +1,10 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
-
+import client from '../config/baseServer';
 import { ButtonGroup, Button} from 'react-bootstrap';
 
 
-const client = axios.create({
-    baseURL: "http://127.0.0.1:8080/board" 
-  });
 
 const PageIncrease = (page,maxpage)=>{
     if(maxpage === page){
@@ -38,18 +35,14 @@ const Board =(props) => {
     
     const [boardData, setBoardData] = React.useState([]);
     const [page, setPage] = React.useState(1);
-    React.useEffect(()=>{
-        client.get('/board/count').then((response)=>{
-            setMaxpage(response.data)
-        })
-    },[maxpage])
+   
     React.useEffect(() =>{
-        client.get('/getList?page='+1).then((response)=>{
+        client.get('/board/getList?page='+1).then((response)=>{
             setBoardData(response.data.boardList)
         })
     },[])  
     React.useEffect(() =>{
-        client.get('/getList?page='+page).then((response)=>{
+        client.get('/board/getList?page='+page).then((response)=>{
             const mainData = response.data
             setMaxpage(mainData.count)
             setBoardData(mainData.boardList)
@@ -63,6 +56,7 @@ const Board =(props) => {
             <button><a href='/boardCreate' style={{textDecoration:'none', color:'#000000'}}>글작성</a></button>
             </div>
             <br></br>
+            <div style={{height:'470px', border:'1px solid #003458', margin:'10px'}}>
             <Table striped bordered hover>
             <thead>
                 <tr>    
@@ -73,6 +67,7 @@ const Board =(props) => {
                 </tr>
             </thead>
             <tbody>
+            
             {boardData.map((data)=>(
                             <tr>
                                 <td>{data.id}</td>
@@ -81,33 +76,27 @@ const Board =(props) => {
                                 <td>{data.localDateTime.split('T')[0]}</td>
                             </tr>
                         ))}
-                
+           
             </tbody>
             </Table>
-            
             <div >
                 
-                <div style={{ display: "flex",  justifyContent: "center"}}>
+            </div> 
+            </div>
+            <div style={{ display: "flex",  justifyContent: "center"}}>
                 <ButtonGroup className="me-2-center" aria-label="First group" >
                 <button onClick={()=>setPage(PageDescend(page, maxpage))}>이전</button>
                 
 
                 {buttonNum(maxpage).map((i)=>(
                     <Button variant="secondary" onClick={()=>{setPage(PageIncrease(page, maxpage)); setPage(i);}
-                
                 }>{i}</Button>
                 ))}
-                
-                
                 <button onClick={()=>setPage(PageIncrease(page, maxpage))}>이후</button>
                 </ButtonGroup>
                 </div>
-            </div> 
-            
         </>
-
     )
 }
-
 
 export default Board

@@ -29,7 +29,7 @@ const Home = () => {
 
             </div>
             <div className="right">
-            <Card style={{ width: '95%', margin:'10px' }}>
+            <Card style={{ width: '95%', margin:'10px', height:'220px'}}>
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>
@@ -40,7 +40,7 @@ const Home = () => {
                 <Button variant="primary">Go somewhere</Button>
             </Card.Body>    
             </Card>
-            <Card style={{ width: '95%', margin:'10px' }}>
+            <Card style={{ width: '95%', margin:'10px', height:'220px' }}>
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>
@@ -51,7 +51,7 @@ const Home = () => {
                 <Button variant="primary">Go somewhere</Button>
             </Card.Body>    
             </Card>
-            <Card style={{ width: '95%', margin:'10px' }}>
+            <Card style={{ width: '95%', margin:'10px', height:'220px' }}>
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>
