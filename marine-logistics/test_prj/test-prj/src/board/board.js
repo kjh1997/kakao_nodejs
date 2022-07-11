@@ -67,7 +67,7 @@ const Board =(props) => {
                 </tr>
             </thead>
             <tbody>
-            
+
             {boardData.map((data)=>(
                             <tr>
                                 <td>{data.id}</td>
@@ -86,8 +86,6 @@ const Board =(props) => {
             <div style={{ display: "flex",  justifyContent: "center"}}>
                 <ButtonGroup className="me-2-center" aria-label="First group" >
                 <button onClick={()=>setPage(PageDescend(page, maxpage))}>이전</button>
-                
-
                 {buttonNum(maxpage).map((i)=>(
                     <Button variant="secondary" onClick={()=>{setPage(PageIncrease(page, maxpage)); setPage(i);}
                 }>{i}</Button>

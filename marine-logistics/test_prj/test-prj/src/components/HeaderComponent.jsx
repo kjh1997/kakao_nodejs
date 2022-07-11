@@ -4,7 +4,34 @@ import Navbar from 'react-bootstrap/Navbar';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function HeaderComponent() {
+const if_login = () =>{
+  console.log("test : " +   localStorage.getItem('uesrname'))
+  if(localStorage.getItem('username') !== null){
+    return (<> <Nav.Link href="/login">Login</Nav.Link>
+    <Nav.Link href="/signup">SingUp</Nav.Link></>)
+  } else {
+    return (<>
+     <Nav.Link>{localStorage.getItem('username')}</Nav.Link>,
+    <Nav.Link >로그아웃</Nav.Link>
+    </>)
+  }
+}
+
+const HeaderComponent = () =>  {
+  let username = localStorage.getItem('username')
+  const if_login = () =>{
+    console.log("test : " +   username)
+    if(username === null){
+      return (<> <Nav.Link href="/login">Login</Nav.Link>
+      <Nav.Link href="/signup">SingUp</Nav.Link></>)
+    } else {
+      return ( <>
+       <Nav.Link>{username}</Nav.Link>
+      <Nav.Link >로그아웃</Nav.Link>
+      </>)
+    }
+  }
+  
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -17,8 +44,7 @@ function HeaderComponent() {
             <Nav.Link href="#link">Map</Nav.Link>
           </Nav>
           <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/login">Login</Nav.Link>
-                  <Nav.Link href="/signup">SingUp</Nav.Link>
+              {if_login()}
           </Nav>
         </Navbar.Collapse>
       </Container>

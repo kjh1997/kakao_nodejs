@@ -1,0 +1,11 @@
+{"access-control-allow-credentials":"true",
+"access-control-allow-origin":"http://127.0.0.1:3000",
+"access-control-expose-headers":"Authorization_Refresh, Authorization, *",
+"authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiaWQiOjEsImV4cCI6MTY1NzUyMTg2MywidXNlcm5hbWUiOiJ0ZXN0In0.AuiTKwLzfXlEnovsuAYhmQW0Bk3WebPucFFLSVXsqXtIlvsUaN0J8uyE8Ef9obVs1mQui2ynIrw7broENjTXdQ",
+"authorization_refresh":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiaWQiOjEsImV4cCI6MTY1ODEyNDg2MywidXNlcm5hbWUiOiJ0ZXN0In0.XIu0WfOmyMAiVbiLD4XJZ2ZnOIO0Uz42lVGyI2lJe023tDXfJMZYanfGjte1iPJNNXV3XPwHUVim52uqrBFUKA",
+"cache-control":"no-cache, no-store, max-age=0, must-revalidate",
+"connection":"keep-alive",
+"content-length":"0",
+"date":"Mon, 11 Jul 2022 06:14:24 GMT","expires":"0",
+"keep-alive":"timeout=60","pragma":"no-cache","vary":"Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+"x-content-type-options":"nosniff","x-frame-options":"DENY","x-xss-protection":"1; mode=block"}

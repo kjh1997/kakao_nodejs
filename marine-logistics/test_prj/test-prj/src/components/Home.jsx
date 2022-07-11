@@ -5,7 +5,6 @@ const Home = () => {
     
     return (
         <>
-
         <div className='home'>
             <div className="left">
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
@@ -19,13 +18,6 @@ const Home = () => {
                 fdsafsafsadfsad
             </Tab>
             </Tabs>
-
-
-
-
-
-
-
 
             </div>
             <div className="right">

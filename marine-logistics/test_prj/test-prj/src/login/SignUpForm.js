@@ -1,19 +1,29 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import "./LoginRegister.css"
 import client from '../config/baseServer';
-import { Navigate  } from "react-router-dom"
-import axios from 'axios';
+import { useNavigate , Route, Routes  } from "react-router-dom"
+
+const useDidMountEffect = (func, deps) => {
+	const didMount = useRef(false);
+
+	useEffect(() => {
+		if (didMount.current) func();
+		else didMount.current = true;
+	}, deps);
+};
 
 function RegisterPage() {
+  const navigate = useNavigate();
   const [name, setName] = useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [res, setRes] = useState("")
+  const [res, setRes] = useState()
 
   const onNameHandler = (event) => {
     setName(event.currentTarget.value)
   }
+
   const onEmailHandler = (event) => {
       setEmail(event.currentTarget.value)
   }
@@ -26,26 +36,33 @@ function RegisterPage() {
       setConfirmPassword(event.currentTarget.value)
   }
 
-  const onSubmit = (event) => {
+  const onSubmit = (event) =>  {
     event.preventDefault()
-    console.log("회원가입 시작");
     if(password !== confirmPassword) {
       return alert('비밀번호와 비밀번호확인은 같아야 합니다.')
     }
-    alert('yrdy.')
-    client.post('/user/register',{name: name,email:email,password:password} )
+    client.post('/user/register', {name: name,email:email,password:password})
     .then((response)=>{
-      setRes(response.data)
-      console.log(response.data + " test ")
+      setRes(response.data) 
+      console.log(typeof response.status + " test type ")
+      console.log(response.data)
     })
-  
-    console.log(name, email, password)
-    if(res !== ""){
-        return <Navigate to="/login" replace={true}/>
-    }
-    return alert('회원가입에 실패하셨습니다.');
+    
+    
   }
-
+  useDidMountEffect(()=>{
+    if(res ==="success"){
+      alert('회원가입에 성공하셨습니다.')
+      return navigate('/')
+    }
+    else if( res === "duplicate"){
+      alert('이미 존재하는 회원입니다.')
+      window.location.replace("/signup")
+      return navigate('/signup', { replace: true })
+    }
+    alert('회원가입에 실패하셨습니다.');
+  },[res])
+  
   return (
     <div className="loginregister">
       <form>
