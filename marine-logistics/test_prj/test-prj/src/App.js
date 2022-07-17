@@ -9,6 +9,7 @@ import Login from './login/Login';
 import RegisterPage from './login/SignUpForm';
 import CreateBoard from './board/createBoard';
 import Logout from './login/Logout';
+import DashBoard from './map/dashboard';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                   <Route path = "/signup" element = {<RegisterPage/>}></Route>
                   <Route path = "/boardCreate" element = {<CreateBoard/>}></Route>
                   <Route path = "/logout" element = {<Logout/>}></Route>
+                  <Route path = "/map" element = {<DashBoard/>}></Route>
               </Routes>
             </div>
             <FooterComponent></FooterComponent>

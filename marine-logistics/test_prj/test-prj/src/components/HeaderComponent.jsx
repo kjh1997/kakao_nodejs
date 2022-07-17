@@ -41,7 +41,8 @@ const HeaderComponent = () =>  {
           <Nav className="me-auto">
             <Nav.Link href="/board">게시판</Nav.Link>
             <Nav.Link href="#link">Dashboard</Nav.Link>
-            <Nav.Link href="#link">Map</Nav.Link>
+            <Nav.Link href="/map">Map</Nav.Link>
+            <Nav.Link href="/map">VideoStreaming</Nav.Link>
           </Nav>
           <Nav className="justify-content-end flex-grow-1 pe-3">
               {if_login()}
